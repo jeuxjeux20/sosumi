@@ -8,6 +8,11 @@ void *memcpy(void *dest, const void *src, size_t count)
     return dest;
 }
 
+void *memset(void *dest, char val, size_t count) {
+    char *temp = (char *)dest;
+    for( ; count != 0; count--) *temp++ = val;
+    return dest;
+}
 
 unsigned short *memsetw(unsigned short *dest, unsigned short val, size_t count)
 {
