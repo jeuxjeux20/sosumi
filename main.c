@@ -11,9 +11,7 @@ void vidPutchar(char p);
 
 
 void clearVideo() {
-	for (i = (char *) VIDEO;
-         i < (char *) VIDEO + COLS * ROWS * 2;
-         i++) {
+	for (char * i = (char *) VIDEO; i < (char *) VIDEO + COLS * ROWS * 2; i++) {
         *i = 0;
     }
 }
@@ -68,9 +66,8 @@ void vidPutchar(char p)
 //use screen as (unsigned char *) VIDEO by casting to it x)
 void putpixel(unsigned char *screen,int x,int y,int color){
 	memset((char *)screen,color,(320 * 200));
-	unsigned pos = y * 320 + x * 80;
+	int pos = y * 320 + x * 80;
 	memset(screen, + (y *320 + 80) +x,160);
-	int pos = x + y * 320;
 	screen[pos] = color & 255;
 	screen[pos] = (color >> 8) & 255;
 	screen[pos + 2] = (color >> 16) & 255;
