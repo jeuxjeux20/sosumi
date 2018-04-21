@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-O2 -g -I/libc/ -nostdlib
 ASFLAGS=
 LD=ld
-LDBASEFLAGS=-Ttext 100000
+LDBASEFLAGS=-Ttext 100000 -nostdlib
 LDFLAGS=
 
 OBJS=\
