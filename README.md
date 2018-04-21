@@ -1,2 +1,2 @@
 # sosumi
-best os 
+Very great OS !!!
