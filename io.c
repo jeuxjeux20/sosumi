@@ -14,12 +14,7 @@ static inline uint32_t farpeekl(uint16_t sel, void* off)
 }
 
 
-void beep() {
- 	 play_sound(1000);
- 	 timer_wait(10);
- 	 nosound();
-          //set_PIT_2(old_frequency);
-}
+
 static inline void farpokeb(uint16_t sel, void* off, uint8_t v)
 {
     asm ( "push %%fs\n\t"
@@ -127,6 +122,12 @@ static inline void wrmsr(uint64_t msr, uint64_t value)
 		:
 		: "c"(msr), "a"(low), "d"(high)
 	);
+}
+void beep() {
+ 	 play_sound(1000);
+ 	 timer_wait(10);
+ 	 nosound();
+          //set_PIT_2(old_frequency);
 }
 static inline uint64_t rdmsr(uint64_t msr)
 {
