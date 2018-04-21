@@ -1,6 +1,6 @@
 #include "io.h"
 #include "multiboot.h"
-
+#include <string.h>
 #define COLS 80
 #define ROWS 24
 #define VIDEO 0xB8000
@@ -8,6 +8,7 @@
 #define NULL ((void *) 0)
 
 void vidPutchar(char p);
+
 
 void clearVideo() {
 	for (i = (char *) VIDEO;
@@ -64,3 +65,13 @@ void vidPutchar(char p)
     if (pcloc >= COLS * ROWS) pcloc = 0; // stupid
 }
 
+//use screen as (unsigned char *) VIDEO by casting to it x)
+void putpixel(unsigned char *screen,int x,int y,int color){
+	memset((char *)screen,color,(320 * 200));
+	unsigned pos = y * 320 + x * 80;
+	memset(screen, + (y *320 + 80) +x,160);
+	int pos = x + y * 320;
+	screen[pos] = color & 255;
+	screen[pos] = (color >> 8) & 255;
+	screen[pos + 2] = (color >> 16) & 255;
+}
