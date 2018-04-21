@@ -1,3 +1,4 @@
+#include <stdio.h>
 static inline uint32_t farpeekl(uint16_t sel, void* off);
 static void play_sound(uint32_t nFrequence);
 void timer_wait(int ticks);
