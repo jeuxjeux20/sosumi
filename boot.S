@@ -71,3 +71,4 @@ loop:	hlt
 	/* Our stack area.  */
 	.comm	stack, STACK_SIZE
 	
+
