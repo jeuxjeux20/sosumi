@@ -1,4 +1,7 @@
+typedef unsigned short  uint16_t;
 #include <stdio.h>
+#include <stdbool.h>
+#include <stdint.h>
 static inline uint32_t farpeekl(uint16_t sel, void* off)
 {
     uint32_t ret;
