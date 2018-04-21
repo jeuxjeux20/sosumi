@@ -17,7 +17,7 @@
 
 #define ASM	1
 #include "multiboot.h"
-	
+	.code32
 	.text
 
 	.globl	start, _start
@@ -71,4 +71,3 @@ loop:	hlt
 	/* Our stack area.  */
 	.comm	stack, STACK_SIZE
 	
-
