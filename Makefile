@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O2 -g -I/libc/
+CFLAGS=-O2 -g -I/libc/ -nostdlib
 ASFLAGS=
 LD=ld
 LDBASEFLAGS=-Ttext 100000
