@@ -1,3 +1,4 @@
+#include <stdio.h>
 extern inline unsigned char get_fs_byte(const char * addr);
 extern inline unsigned short get_fs_word(const unsigned short *addr);
 extern inline unsigned long get_fs_long(const unsigned long *addr);
