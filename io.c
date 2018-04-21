@@ -125,6 +125,11 @@ static inline void wrmsr(uint64_t msr, uint64_t value)
 		: "c"(msr), "a"(low), "d"(high)
 	);
 }
+ static void nosound() {
+ 	unsigned char tmp = inb(0x61) & 0xFC;
+ 
+ 	outb(0x61, tmp);
+ }
 void beep() {
  	 play_sound(1000);
  	 timer_wait(10);
