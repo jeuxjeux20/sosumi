@@ -7,8 +7,8 @@ LDFLAGS=
 
 OBJS=\
  boot.o \
- brainfuck.o \
- dev.o \
+ io.o \
+ fsHelper.o \
  main.o
 
 all: kernel
