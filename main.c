@@ -5,7 +5,6 @@
 #define ROWS 24
 #define VIDEO 0xB8000
 #define BLANKATTR 7
-#define NULL ((void *) 0)
 
 void vidPutchar(char p);
 
