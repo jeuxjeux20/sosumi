@@ -8,7 +8,6 @@ LDFLAGS=
 OBJS=\
  boot.o \
  io.o \
- fsHelper.o \
  main.o
 
 all: kernel
