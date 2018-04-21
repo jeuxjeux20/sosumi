@@ -1,3 +1,4 @@
+#include <stdio.h>
 extern inline unsigned char get_fs_byte(const char * addr)
 {
 	unsigned register char _v;
