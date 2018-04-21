@@ -13,38 +13,7 @@ static inline uint32_t farpeekl(uint16_t sel, void* off)
     return ret;
 }
 
-static void play_sound(uint32_t nFrequence) {
- 	uint32_t Div;
- 	uint8_t tmp;
- 
-    //Set the PIT to the desired frequency
- 	Div = 1193180 / nFrequence;
- 	outb(0x43, 0xb6);
- 	outb(0x42, (uint8_t) (Div) );
- 	outb(0x42, (uint8_t) (Div >> 8));
- 
-    //And play the sound using the PC speaker
- 	tmp = inb(0x61);
-  	if (tmp != (tmp | 3)) {
- 		outb(0x61, tmp | 3);
- 	}
-}
-volatile unsigned int timer_ticks = 0; 
-void timer_wait(int ticks)
-{
-    unsigned int eticks;
- 
-    eticks = timer_ticks + ticks;
-    while(timer_ticks < eticks) 
-    {
-        __asm__ __volatile__ ("sti//hlt//cli");
-    }
-}
-static void shutup() {
- 	uint8_t tmp = inb(0x61) & 0xFC;
- 
- 	outb(0x61, tmp);
-}
+
 void beep() {
  	 play_sound(1000);
  	 timer_wait(10);
@@ -116,6 +85,38 @@ static inline void invlpg(void* m)
 {
     /* Clobber memory to avoid optimizer re-ordering access before invlpg, which may cause nasty bugs. */
     asm volatile ( "invlpg (%0)" : : "b"(m) : "memory" );
+}
+static void play_sound(uint32_t nFrequence) {
+ 	uint32_t Div;
+ 	uint8_t tmp;
+ 
+    //Set the PIT to the desired frequency
+ 	Div = 1193180 / nFrequence;
+ 	outb(0x43, 0xb6);
+ 	outb(0x42, (uint8_t) (Div) );
+ 	outb(0x42, (uint8_t) (Div >> 8));
+ 
+    //And play the sound using the PC speaker
+ 	tmp = inb(0x61);
+  	if (tmp != (tmp | 3)) {
+ 		outb(0x61, tmp | 3);
+ 	}
+}
+volatile unsigned int timer_ticks = 0; 
+void timer_wait(int ticks)
+{
+    unsigned int eticks;
+ 
+    eticks = timer_ticks + ticks;
+    while(timer_ticks < eticks) 
+    {
+        __asm__ __volatile__ ("sti//hlt//cli");
+    }
+}
+static void shutup() {
+ 	uint8_t tmp = inb(0x61) & 0xFC;
+ 
+ 	outb(0x61, tmp);
 }
 static inline void wrmsr(uint64_t msr, uint64_t value)
 {
