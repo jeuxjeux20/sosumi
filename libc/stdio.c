@@ -1,4 +1,5 @@
 #include "../io.h"
+#include "../main.h"
 #include "string.h"
 #include "stdbool.h"
 #include "stdint.h"
@@ -137,3 +138,16 @@ alias
 char getC() {
     getChar()
 }
+
+static bool print(const char* data, size_t length) {
+	const unsigned char* bytes = (const unsigned char*) data;
+	for (size_t i = 0; i < length; i++)
+		if (vidPutchar(bytes[i]) == EOF)
+			return false;
+	return true;
+}
+int printf(const char* a) {
+    print(a, sizeof(a))
+	return 1;
+}
+ 
