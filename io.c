@@ -94,13 +94,7 @@ static inline void lidt(void* base, uint16_t size)
  
     asm ( "lidt %0" : : "m"(IDTR) );  // let the compiler choose an addressing mode
 }
-static inline uint64_t rdtsc()
-{
-    uint64_t ret;
-    asm volatile ( "rdtsc" : "=A"(ret) );
-    return ret;
-}
-uint64_t rdtsc(void)
+static inline uint64_t rdtsc(void)
 {
     uint32_t low, high;
     asm volatile("rdtsc":"=a"(low),"=d"(high));
