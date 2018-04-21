@@ -40,7 +40,7 @@ __asm__ ("movl %0,%%fs:%1"::"r" (val),"m" (*addr));
 
 extern inline void memcpy_tofs(void * to, void * from, unsigned long n)
 {
-__asm__("cld\n\t"
+__asm__ __volatile__ ("cld\n\t"
 	"push %%es\n\t"
 	"push %%fs\n\t"
 	"pop %%es\n\t"
