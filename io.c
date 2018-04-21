@@ -1,3 +1,4 @@
+#include <stdio.h>
 static inline uint32_t farpeekl(uint16_t sel, void* off)
 {
     uint32_t ret;
