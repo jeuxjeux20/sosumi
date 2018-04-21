@@ -1,7 +1,7 @@
 #include "../io.h"
 #include "string.h"
 #include "stdbool.h"
-
+#include <stdint.h>
 unsigned char keymapqwertz[] = 
 {
 /*
