@@ -105,7 +105,9 @@ void timer_wait(int ticks)
     eticks = timer_ticks + ticks;
     while(timer_ticks < eticks) 
     {
-        __asm__ __volatile__ ("sti//hlt//cli");
+        __asm__ __volatile__ ("sti");
+	__asm__ __volatile__ ("hlt");
+	__asm__ __volatile__ ("cli");
     }
 }
 static void shutup() {
