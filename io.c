@@ -1,4 +1,4 @@
-typedef unsigned short  uint16_t;
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -12,6 +12,7 @@ static inline uint32_t farpeekl(uint16_t sel, void* off)
           : "=r"(ret) : "g"(sel), "r"(off) );
     return ret;
 }
+
 static void play_sound(uint32_t nFrequence) {
  	uint32_t Div;
  	uint8_t tmp;
@@ -28,6 +29,7 @@ static void play_sound(uint32_t nFrequence) {
  		outb(0x61, tmp | 3);
  	}
 }
+volatile unsigned int timer_ticks = 0; 
 void timer_wait(int ticks)
 {
     unsigned int eticks;
@@ -58,7 +60,7 @@ static inline void farpokeb(uint16_t sel, void* off, uint8_t v)
           : : "g"(sel), "r"(off), "r"(v) );
     /* TODO: Should "memory" be in the clobber list here? */
 }
-static inline void outb(uint16_t port, uint8_t val)
+static inline void outb(short port, unsigned char val)
 {
     asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
     /* There's an outb %al, $imm8  encoding, for compile-time constant port numbers that fit in 8b.  (N constraint).
@@ -66,7 +68,7 @@ static inline void outb(uint16_t port, uint8_t val)
      * The  outb  %al, %dx  encoding is the only option for all other cases.
      * %1 expands to %dx because  port  is a uint16_t.  %w1 could be used if we had the port number a wider C type */
 }
-static inline uint8_t inb(uint16_t port)
+static inline unsigned char inb(short port)
 {
     uint8_t ret;
     asm volatile ( "inb %1, %0"
