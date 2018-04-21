@@ -1,4 +1,6 @@
 #include "../io.h"
+#include "string.h"
+#include "stdbool.h"
 
 unsigned char keymapqwertz[];
 unsigned char keymapazerty[];
