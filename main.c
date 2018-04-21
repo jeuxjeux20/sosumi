@@ -1,6 +1,7 @@
 #include "io.h"
 #include "multiboot.h"
 #include <string.h>
+#include <stdio.h>
 #define COLS 80
 #define ROWS 24
 #define VIDEO 0xB8000
