@@ -18,6 +18,7 @@ void clearVideo() {
     }
 }
 void main(unsigned long magic, unsigned long addr) {
+	printf("yo");
 }
 /* main multiboot entrance */
 void cmain(unsigned long magic, unsigned long addr)
@@ -48,7 +49,6 @@ void cmain(unsigned long magic, unsigned long addr)
     /* clear out video */
     clearVideo();
     
-    /* start our BF interp */
     main(magic, addr);
 }
 
